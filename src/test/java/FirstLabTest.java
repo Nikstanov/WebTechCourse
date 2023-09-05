@@ -1,6 +1,9 @@
+import org.education.Lab1.task1.Task1;
 import org.education.Lab1.task5.Task5;
 import org.education.Lab1.task6.Task6;
 import org.education.Lab1.task7.Task7;
+import org.education.task9.Backet;
+import org.education.task9.Ball;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,15 +12,34 @@ import java.util.Arrays;
 
 public class FirstLabTest {
 
+    static Task1 task1;
     static Task5 task5;
     static Task6 task6;
     static Task7 task7;
 
     @BeforeAll
     static void before(){
+        task1 = new Task1();
         task5 = new Task5();
         task6 = new Task6();
         task7 = new Task7();
+    }
+
+    @Test
+    public void test1(){
+        //TODO
+    }
+
+    @Test
+    public void test9(){
+        Backet backet = new Backet();
+        backet.addBall(new Ball(Ball.COLOR_BLUE, 3));
+        backet.addBall(new Ball(Ball.COLOR_YELLOW, 2));
+        backet.addBall(new Ball(Ball.COLOR_BLUE, 1));
+        backet.addBall(new Ball(Ball.COLOR_GRAY, 4));
+
+        Assertions.assertEquals(2, backet.countWithColor(Ball.COLOR_BLUE));
+        Assertions.assertEquals(10, backet.getWeight());
     }
 
     @Test
