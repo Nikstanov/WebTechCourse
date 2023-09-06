@@ -1,13 +1,13 @@
-package org.education.task9;
+package org.education.Lab1.task9;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Backet {
+public class Bucket {
 
     private final List<Ball> balls;
 
-    public Backet() {
+    public Bucket() {
         this.balls = new ArrayList<>();
     }
 

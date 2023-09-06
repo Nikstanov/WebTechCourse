@@ -1,4 +1,4 @@
-package org.education.task9;
+package org.education.Lab1.task9;
 
 public class Ball {
     public static final String COLOR_BLUE = "COLOR_BLUE";

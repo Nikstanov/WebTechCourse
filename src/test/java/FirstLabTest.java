@@ -2,8 +2,8 @@ import org.education.Lab1.task1.Task1;
 import org.education.Lab1.task5.Task5;
 import org.education.Lab1.task6.Task6;
 import org.education.Lab1.task7.Task7;
-import org.education.task9.Backet;
-import org.education.task9.Ball;
+import org.education.Lab1.task9.Bucket;
+import org.education.Lab1.task9.Ball;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -32,14 +32,14 @@ public class FirstLabTest {
 
     @Test
     public void test9(){
-        Backet backet = new Backet();
-        backet.addBall(new Ball(Ball.COLOR_BLUE, 3));
-        backet.addBall(new Ball(Ball.COLOR_YELLOW, 2));
-        backet.addBall(new Ball(Ball.COLOR_BLUE, 1));
-        backet.addBall(new Ball(Ball.COLOR_GRAY, 4));
+        Bucket bucket = new Bucket();
+        bucket.addBall(new Ball(Ball.COLOR_BLUE, 3));
+        bucket.addBall(new Ball(Ball.COLOR_YELLOW, 2));
+        bucket.addBall(new Ball(Ball.COLOR_BLUE, 1));
+        bucket.addBall(new Ball(Ball.COLOR_GRAY, 4));
 
-        Assertions.assertEquals(2, backet.countWithColor(Ball.COLOR_BLUE));
-        Assertions.assertEquals(10, backet.getWeight());
+        Assertions.assertEquals(2, bucket.countWithColor(Ball.COLOR_BLUE));
+        Assertions.assertEquals(10, bucket.getWeight());
     }
 
     @Test
