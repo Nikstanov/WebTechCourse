@@ -6,9 +6,9 @@ public class Ball {
     public static final String COLOR_YELLOW = "COLOR_YELLOW";
 
     private final String color;
-    private final int weight;
+    private final double weight;
 
-    public Ball(String color, int weight) {
+    public Ball(String color, double weight) {
         this.color = color;
         this.weight = weight;
     }
@@ -17,7 +17,7 @@ public class Ball {
         return color;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 }

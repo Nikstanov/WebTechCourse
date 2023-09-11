@@ -3,8 +3,8 @@ package org.education.Lab1.task13;
 import org.education.Lab1.task12.Book;
 
 public class ProgrammerBook extends Book {
-    private String language;
-    private int level;
+    private final String language;
+    private final int level;
 
     public ProgrammerBook(String title, String author, int price, String language, int level) {
         super(title, author, price);

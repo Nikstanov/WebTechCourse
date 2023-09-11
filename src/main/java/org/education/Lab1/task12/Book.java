@@ -1,11 +1,22 @@
 package org.education.Lab1.task12;
 
-import org.education.Lab1.task16.BookComparator;
-
-public class Book implements Cloneable, Comparable<Book>, BookComparator {
+public class Book implements Cloneable, Comparable<Book>{
 
     private String title;
     private String author;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     private int price;
     private static int edition;
 
@@ -53,9 +64,9 @@ public class Book implements Cloneable, Comparable<Book>, BookComparator {
     public Book clone() {
         try {
             Book clone = (Book) super.clone();
-            clone.title = this.title;
+            clone.title = String.copyValueOf(this.title.toCharArray());
             clone.price = price;
-            clone.author = author;
+            clone.author = String.copyValueOf(this.author.toCharArray());
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
@@ -67,35 +78,30 @@ public class Book implements Cloneable, Comparable<Book>, BookComparator {
         return isbn - o.isbn;
     }
 
-    @Override
-    public int compare(Book o1, Book o2) {
-        return o1.compareTo(o2);
-    }
+//    @Override
+//    public int BookTitleComparator.compare(Book o1, Book o2) {
+//        return 0;
+//    }
 
-    @Override
-    public int compareByTitle(Book o1, Book o2) {
-        return o1.title.compareTo(o2.title);
-    }
+//    @Override
+//    public int compare(Book o1, Book o2) {
+//        return o1.compareTo(o2);
+//    }
 
-    @Override
-    public int compareByTitleAndAuthor(Book o1, Book o2) {
-        int temp = compareByTitle(o1,o2);
-        if(temp != 0){
-            return temp;
-        }
-        else{
-            return o1.author.compareTo(o2.author);
-        }
-    }
-
-    @Override
-    public int compareByTitleAuthorPrice(Book o1, Book o2) {
-        int temp = compareByTitleAndAuthor(o1,o2);
-        if(temp != 0){
-            return temp;
-        }
-        else{
-            return o1.price - o2.price;
-        }
-    }
+//    @Override
+//    public int compareByTitle(Book o1, Book o2) {
+//        return o1.title.compareTo(o2.title);
+//    }
+//
+//    @Override
+//    public int compareByTitleAndAuthor(Book o1, Book o2) {
+//        int temp = compareByTitle(o1,o2);
+//        return (temp != 0) ? temp : o1.author.compareTo(o2.author);
+//    }
+//
+//    @Override
+//    public int compareByTitleAuthorPrice(Book o1, Book o2) {
+//        int temp = compareByTitleAndAuthor(o1,o2);
+//        return (temp != 0) ? temp : o1.price - o2.price;
+//    }
 }

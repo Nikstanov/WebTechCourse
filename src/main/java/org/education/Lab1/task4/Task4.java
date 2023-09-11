@@ -8,7 +8,7 @@ import java.util.Random;
 public class Task4 {
     static Random random = new Random();
 
-    public List<Integer> findPrimeNums(int[] nums){
+    public static List<Integer> findPrimeNums(int[] nums){
         List<Integer> primes = new ArrayList<>();
         for(int num : nums){
             if(isPrime(BigInteger.valueOf(num))){
@@ -18,6 +18,7 @@ public class Task4 {
         return primes;
     }
 
+    // Taken from another lab ...
     private static boolean isPrime(BigInteger number){
         int ran = Math.abs(random.nextInt(number.intValue()));
         while(ran == 0){

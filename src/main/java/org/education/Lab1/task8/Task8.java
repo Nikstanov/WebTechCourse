@@ -1,27 +1,21 @@
 package org.education.Lab1.task8;
 
 public class Task8 {
-    public int[] pushSequence(int[] a, int[] b){
-        int[] res = new int[a.length + b.length];
+    public static int[] pushSequence(double[] a, double[] b){
+        int[] res = new int[b.length];
         int indA = 0, indB = 0;
         while(indA < a.length && indB < b.length){
             if(a[indA] < b[indB]){
-                res[indA + indB] = a[indA];
                 indA++;
             }
             else{
-                res[indA + indB] = b[indB];
+                res[indB] = indA + indB;
                 indB++;
             }
         }
-        if(indA < a.length){
-            for(;indA < a.length; indA++){
-                res[indA + indB] = a[indA];
-            }
-        }
-        else{
+        if(indB < b.length){
             for(;indB < b.length; indB++){
-                res[indA + indB] = b[indB];
+                res[indB] = indA + indB;
             }
         }
         return res;

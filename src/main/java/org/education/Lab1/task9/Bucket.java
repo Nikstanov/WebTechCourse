@@ -15,8 +15,8 @@ public class Bucket {
         balls.add(ball);
     }
 
-    public int getWeight(){
-        int res = 0;
+    public double getWeight(){
+        double res = 0;
         for(Ball ball : balls){
             res += ball.getWeight();
         }
