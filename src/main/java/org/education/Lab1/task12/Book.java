@@ -5,6 +5,9 @@ public class Book implements Cloneable, Comparable<Book>{
     private String title;
     private String author;
 
+    public Book() {
+    }
+
     public String getTitle() {
         return title;
     }
@@ -64,9 +67,9 @@ public class Book implements Cloneable, Comparable<Book>{
     public Book clone() {
         try {
             Book clone = (Book) super.clone();
-            clone.title = String.copyValueOf(this.title.toCharArray());
+            clone.title = title;
             clone.price = price;
-            clone.author = String.copyValueOf(this.author.toCharArray());
+            clone.author = author;
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
@@ -77,31 +80,4 @@ public class Book implements Cloneable, Comparable<Book>{
     public int compareTo(Book o) {
         return isbn - o.isbn;
     }
-
-//    @Override
-//    public int BookTitleComparator.compare(Book o1, Book o2) {
-//        return 0;
-//    }
-
-//    @Override
-//    public int compare(Book o1, Book o2) {
-//        return o1.compareTo(o2);
-//    }
-
-//    @Override
-//    public int compareByTitle(Book o1, Book o2) {
-//        return o1.title.compareTo(o2.title);
-//    }
-//
-//    @Override
-//    public int compareByTitleAndAuthor(Book o1, Book o2) {
-//        int temp = compareByTitle(o1,o2);
-//        return (temp != 0) ? temp : o1.author.compareTo(o2.author);
-//    }
-//
-//    @Override
-//    public int compareByTitleAuthorPrice(Book o1, Book o2) {
-//        int temp = compareByTitleAndAuthor(o1,o2);
-//        return (temp != 0) ? temp : o1.price - o2.price;
-//    }
 }

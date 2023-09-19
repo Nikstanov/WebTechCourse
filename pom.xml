@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.education</groupId>
-    <artifactId>Labs</artifactId>
+    <artifactId>Lab1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
