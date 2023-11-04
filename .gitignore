@@ -36,3 +36,7 @@ build/
 .DS_Store
 
 /.idea/
+
+### DEV ###
+/src/main/resources/database.properties
+
