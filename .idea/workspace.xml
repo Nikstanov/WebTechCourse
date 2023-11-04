@@ -9,9 +9,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b04127c-d10c-4ecd-b34e-94118c6e1813" name="Changes" comment="Start to do DAO, some fixes with beans">
+    <list default="true" id="1b04127c-d10c-4ecd-b34e-94118c6e1813" name="Changes" comment="Redesigned the system structure, &#10;add localization example,&#10;add new commands: Main, Movie&#10;add movies pagination and observation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/DAOFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/connection/ProxyConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/exception/ConnectionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/command/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/command/CommandFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/command/Commands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/command/Impl/MainCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/command/Impl/MovieCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/command/Impl/SignUpCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/service/MovieService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/service/ServiceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/service/exception/ServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/education/utills/mapper/MovieMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database_dev.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localizations/localization_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localizations/localization_ru.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1ccb67e5-77b9-4368-8cf8-1283101496a8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1ccb67e5-77b9-4368-8cf8-1283101496a8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f430cdd7-339f-41ac-8a9f-ce87f31c3970.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f430cdd7-339f-41ac-8a9f-ce87f31c3970.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/BasicConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/connection/ConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/ConnectionPoolFabric.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/exception/DBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/exception/DatabaseQueryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/impl/ConnectionPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/impl/MovieDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/DAO/impl/MovieDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/DAO/impl/UserDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/beans/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/beans/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/controller/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/controller/MainServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/service/impl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/education/service/impl/MovieServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/service/impl/ReviewServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/education/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin_page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/main_menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/common/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/movie.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/movies_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/common/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/signIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/signIn.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/signUp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/signUp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DBTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DBTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +68,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -51,48 +98,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;lab2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Nikstanov/Study/5sem/WebTech/Lab2/src/main/webapp/WEB-INF/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "lab2",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Nikstanov/Study/5sem/WebTech/Lab2/src/main/webapp/WEB-INF/view/common",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.education.DAO" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF\view\common" />
+      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF\view\localizations" />
       <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\resources\localizations" />
+      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\resources" />
+      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF\view" />
       <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\jsp" />
       <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF\lib" />
-      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp" />
-      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\static" />
-      <recent name="C:\Nikstanov\Study\5sem\WebTech\Lab2\src\main\webapp\WEB-INF\classes" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DBTest">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
     <configuration name="DBTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Lab2" />
       <option name="PACKAGE_NAME" value="" />
@@ -209,98 +259,10 @@
         </option>
       </method>
     </configuration>
-    <configuration name="Tomcat 10.1.9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.9" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="Lab2:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="7311d0fb-1eee-4824-a111-ab661451a32c" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50117" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="Lab2:war exploded" />
-        </option>
-      </method>
-    </configuration>
     <list>
       <item itemvalue="JUnit.DBTest" />
       <item itemvalue="JUnit.DBTest.getAllMovies" />
       <item itemvalue="JUnit.DBTest.getUsersTest" />
-      <item itemvalue="Tomcat Server.Tomcat 10.1.9" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.13" />
     </list>
     <recent_temporary>
@@ -325,6 +287,8 @@
       <workItem from="1696075421030" duration="23000" />
       <workItem from="1696865527671" duration="3134000" />
       <workItem from="1697391262971" duration="6483000" />
+      <workItem from="1697715210513" duration="2509000" />
+      <workItem from="1699111119567" duration="19560000" />
     </task>
     <task id="LOCAL-00001" summary="Start to do DAO, some fixes with beans">
       <created>1697399217065</created>
@@ -333,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697399217065</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="deleted files">
+      <created>1697400237151</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697400237151</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,17 +323,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start to do DAO, some fixes with beans" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start to do DAO, some fixes with beans" />
+    <MESSAGE value="deleted files" />
+    <MESSAGE value="Redesigned the system structure, &#10;add localization example,&#10;add new commands: Main, Movie&#10;add movies pagination and observation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redesigned the system structure, &#10;add localization example,&#10;add new commands: Main, Movie&#10;add movies pagination and observation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/DBTest.java</url>
-          <line>13</line>
+          <line>1</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/education/controller/MainServlet.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

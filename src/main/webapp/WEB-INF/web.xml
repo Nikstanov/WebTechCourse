@@ -8,13 +8,13 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>some</servlet-name>
+    <servlet-name>main</servlet-name>
     <servlet-class>org.education.controller.MainServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>some</servlet-name>
-    <url-pattern>/some</url-pattern>
+    <servlet-name>main</servlet-name>
+    <url-pattern/>
   </servlet-mapping>
 
 </web-app>

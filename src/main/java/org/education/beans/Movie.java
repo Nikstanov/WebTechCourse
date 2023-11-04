@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Movie {
+    private int id;
     private String name;
     private String author;
     private String description;

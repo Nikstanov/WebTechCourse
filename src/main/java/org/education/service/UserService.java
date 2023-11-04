@@ -1,5 +1,5 @@
 package org.education.service;
 
-public class UserService {
+public interface UserService {
 
 }
