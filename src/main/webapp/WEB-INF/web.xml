@@ -17,6 +17,30 @@
     <url-pattern/>
   </servlet-mapping>
 
+  <filter>
+    <filter-name>main_filter</filter-name>
+    <filter-class>org.education.filter.MainFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>main_filter</filter-name>
+    <servlet-name>main</servlet-name>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>security</filter-name>
+    <filter-class>org.education.filter.SecurityFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>security</filter-name>
+    <servlet-name>main</servlet-name>
+  </filter-mapping>
+
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>default</servlet-name>-->
+<!--    <url-pattern>/*.css</url-pattern>-->
+<!--  </servlet-mapping>-->
 </web-app>
 
 

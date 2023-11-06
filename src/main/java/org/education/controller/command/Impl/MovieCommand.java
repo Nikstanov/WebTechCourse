@@ -12,13 +12,16 @@ import java.util.Optional;
 public class MovieCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+        if(request.getParameter("id") == null && request.getSession().getAttribute("movie") != null){
+            return "WEB-INF/view/movie.jsp";
+        }
         try{
             int id = Integer.parseInt(request.getParameter("id"));
             Optional<Movie> movie = ServiceFactory.getInstance().getMovieService().getMovieById(id);
             if(movie.isEmpty()){
                 throw new ServletException("Unknown movie");
             }
-            request.setAttribute("movie", movie.get());
+            request.getSession().setAttribute("movie", movie.get());
         }
         catch (NumberFormatException e){
             throw new ServletException(e.getMessage());

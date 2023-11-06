@@ -4,8 +4,9 @@
 <head>
     <title>Title</title>
 </head>
+<jsp:include page="common/header.jsp"/>
 <body>
-    <form action="">
+    <form action="?command=sign_in" method="post">
         <label for="email_form">Email</label><br/>
         <input id="email_form" type="email" name="email"><br/>
         <label for="password_form">Password</label><br/>

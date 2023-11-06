@@ -5,5 +5,8 @@ public enum Commands {
     MOVIE,
     LOG_OUT,
     SIGN_IN,
-    SIGN_UP
+    SIGN_UP,
+    SIGN_UP_PAGE,
+    SIGN_IN_PAGE,
+    CHANGE_LANG,
 }

@@ -19,12 +19,12 @@ public class MainCommand implements Command {
             pageInd = 0;
         }
         try {
-            request.setAttribute("movies",ServiceFactory.getInstance().getMovieService().getMovies(pageInd));
-            request.setAttribute("maxPage", ServiceFactory.getInstance().getMovieService().getPageCount());
+            request.getSession().setAttribute("movies",ServiceFactory.getInstance().getMovieService().getMovies(pageInd));
+            request.getSession().setAttribute("maxPage", ServiceFactory.getInstance().getMovieService().getPageCount());
         } catch (ServiceException e) {
             throw new ServletException(e.getMessage());
         }
-        request.setAttribute("page", pageInd);
+        request.getSession().setAttribute("page", pageInd);
         return "index.jsp";
     }
 }

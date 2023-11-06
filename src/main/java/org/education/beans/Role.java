@@ -1,5 +1,5 @@
 package org.education.beans;
 
 public enum Role {
-    ADMIN, USER
+    ADMIN, USER, NOT_AUTH
 }
