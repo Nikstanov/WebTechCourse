@@ -30,3 +30,8 @@
 .textArea{
     width:80%;
 }
+
+.review_info{
+    display: flex;
+    flex-direction: row;
+}

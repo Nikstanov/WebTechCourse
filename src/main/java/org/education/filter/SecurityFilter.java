@@ -28,6 +28,15 @@ public class SecurityFilter implements Filter {
     }
 
     UserService userService = ServiceFactory.getInstance().getUserService();
+
+    /**
+     *
+     * @param servletRequest
+     * @param servletResponse
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;

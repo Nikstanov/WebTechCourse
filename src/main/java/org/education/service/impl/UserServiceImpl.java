@@ -2,8 +2,11 @@ package org.education.service.impl;
 
 import com.google.common.hash.Hashing;
 import org.education.DAO.DAOFactory;
+import org.education.DAO.MovieDAO;
+import org.education.DAO.ReviewDAO;
 import org.education.DAO.UserDAO;
 import org.education.DAO.exception.DatabaseQueryException;
+import org.education.beans.Review;
 import org.education.beans.Role;
 import org.education.beans.User;
 import org.education.beans.UserPrincipal;
@@ -21,10 +24,16 @@ import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
     UserDAO userDAO = DAOFactory.getInstance().getUserDAO();
+    ReviewDAO reviewDAO = DAOFactory.getInstance().getReviewDAO();
+    MovieDAO movieDAO = DAOFactory.getInstance().getMovieDAO();
 
     @Override
-    public List<User> getUsers(int pageInd) throws ServiceException {
-        return null;
+    public List<User> getUsers() throws ServiceException {
+        try {
+            return userDAO.getUsers();
+        } catch (DatabaseQueryException e) {
+            throw new ServiceException();
+        }
     }
 
     @Override
@@ -38,7 +47,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getUserById(int id) throws ServiceException {
-        return Optional.empty();
+        try {
+            return userDAO.getUserById(id);
+        } catch (DatabaseQueryException e) {
+            throw new ServiceException(e.getMessage());
+        }
     }
 
     @Override
@@ -51,7 +64,6 @@ public class UserServiceImpl implements UserService {
                         .login(email)
                         .password(str)
                         .username(username)
-                        .banned(false)
                         .role(Role.USER)
                         .socialCredit(0)
                         .build();
@@ -84,6 +96,57 @@ public class UserServiceImpl implements UserService {
             return null;
         } catch (DatabaseQueryException e) {
             throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateRate() throws ServiceException {
+        try {
+            List<User> users = userDAO.getUsers();
+            for(User user : users){
+                int socialCredit = 0;
+                List<Review> reviews = reviewDAO.getReviewsByUser(user);
+                for (Review review : reviews){
+                    double movie_mark = movieDAO.getMovieById(review.getMovie_id()).get().getAverageMark();
+                    if(Math.abs(review.getMark() - movie_mark) > 1){
+                        socialCredit -= 10;
+                    }
+                    else {
+                        socialCredit += 10;
+                    }
+                }
+                user.setSocialCredit(socialCredit);
+                userDAO.updateUser(user);
+            }
+        } catch (DatabaseQueryException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void deleteUser(int id) throws ServiceException {
+        try {
+            userDAO.deleteUser(id);
+        } catch (DatabaseQueryException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void changeStatus(int id) throws ServiceException {
+        Optional<User> userOptional = getUserById(id);
+        if(userOptional.isPresent()){
+            User user = userOptional.get();
+            if(user.getRole() != Role.BANNED){
+                user.setRole(Role.BANNED);
+            }else {
+                user.setRole(Role.USER);
+            }
+            try {
+                userDAO.saveUser(user);
+            } catch (DatabaseQueryException e) {
+                throw new ServiceException(e.getMessage());
+            }
         }
     }
 

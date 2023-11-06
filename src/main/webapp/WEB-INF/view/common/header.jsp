@@ -27,7 +27,7 @@
       </c:if>
     </c:if>
     <c:if test="${role != 'NOT_AUTH'}">
-      <a href="?command=log_out"><fmt:message key="bar.log_out" bundle="${loc}"/></a>
+      <a href="?command=sign_out"><fmt:message key="bar.log_out" bundle="${loc}"/></a>
     </c:if>
     <c:if test="${role == 'ADMIN'}">
       <a href="?command=admin_page"><fmt:message key="bar.admin" bundle="${loc}"/></a>

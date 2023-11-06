@@ -78,5 +78,19 @@ public class MovieDAOImpl implements MovieDAO {
         return res;
     }
 
-
+    @Override
+    public void updateMovieMark(Movie movie) throws DatabaseQueryException {
+        try(Connection connection = connectionPool.getConnection()){
+            String sql = "UPDATE movies SET averagemark = ? WHERE movie_id = ?";
+            try(PreparedStatement statement = connection.prepareStatement(sql)){
+                statement.setDouble(1, movie.getAverageMark());
+                statement.setInt(2, movie.getId());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                throw new DatabaseQueryException(e.getMessage());
+            }
+        } catch (SQLException e) {
+            throw new DatabaseQueryException(e.getMessage());
+        }
+    }
 }

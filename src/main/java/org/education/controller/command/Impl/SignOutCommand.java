@@ -9,7 +9,7 @@ import org.education.controller.command.Command;
 
 import java.io.IOException;
 
-public class LogOutCommand implements Command {
+public class SignOutCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().removeAttribute(Attributes.USER_PRINCIPAL);

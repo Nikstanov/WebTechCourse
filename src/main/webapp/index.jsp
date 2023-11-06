@@ -1,6 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="localizations.localization" var="loc"/>
+
 <html>
 <head>
     <style>
@@ -23,10 +26,10 @@
 </div>
 <br>
 <c:if test="${page > 0}">
-    <a href="?command=main&page=${page-1}">Prev</a>
+    <a href="?command=main&page=${page-1}"><fmt:message key="main.prev" bundle="${loc}"/></a>
 </c:if>
 <c:if test="${page < maxPage}">
-    <a href="?command=main&page=${page+1}">Next</a>
+    <a href="?command=main&page=${page+1}"><fmt:message key="main.next" bundle="${loc}"/></a>
 </c:if>
 </body>
 </html>

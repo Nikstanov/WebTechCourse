@@ -1,6 +1,5 @@
 package org.education.DAO.impl;
 
-import com.google.common.hash.Hashing;
 import org.education.DAO.UserDAO;
 import org.education.DAO.connection.ConnectionPool;
 import org.education.DAO.exception.DatabaseQueryException;
@@ -8,7 +7,6 @@ import org.education.beans.Role;
 import org.education.beans.User;
 import org.education.utills.mapper.UserMapper;
 
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +20,11 @@ public class UserDAOImpl implements UserDAO {
     public List<User> getUsers() throws DatabaseQueryException {
         List<User> res = new ArrayList<>();
         try(Connection connection = connectionPool.getConnection()){
-            String sql = "SELECT * FROM movies";
+            String sql = "SELECT * FROM users";
             try(Statement statement = connection.createStatement()) {
                 try(ResultSet rs = statement.executeQuery(sql)){
                     while(rs.next()){
-                        res.add(UserMapper.mapperMovie(rs));
+                        res.add(UserMapper.mapperUser(rs));
                     }
                 }
             } catch (SQLException e) {
@@ -48,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
                 statement.setString(1, name);
                 try(ResultSet rs = statement.executeQuery()){
                     if(rs.next()){
-                        res = Optional.of(UserMapper.mapperMovie(rs));
+                        res = Optional.of(UserMapper.mapperUser(rs));
                     }
                 }
             } catch (SQLException e) {
@@ -69,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
                 statement.setString(1, name);
                 try(ResultSet rs = statement.executeQuery()){
                     if(rs.next()){
-                        res = Optional.of(UserMapper.mapperMovie(rs));
+                        res = Optional.of(UserMapper.mapperUser(rs));
                     }
                 }
             } catch (SQLException e) {
@@ -90,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
                 statement.setInt(1, id);
                 try(ResultSet rs = statement.executeQuery()){
                     if(rs.next()){
-                        res = Optional.of(UserMapper.mapperMovie(rs));
+                        res = Optional.of(UserMapper.mapperUser(rs));
                     }
                 }
             } catch (SQLException e) {
@@ -124,16 +122,30 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void updateUser(User user) throws DatabaseQueryException {
         try(Connection connection = connectionPool.getConnection()){
-            String sql = "UPDATE users SET login = ?, password = ?, username = ?, socialcredit = ?, role = ?, banned = ?, token = ? WHERE user_id = ?";
+            String sql = "UPDATE users SET login = ?, password = ?, username = ?, socialcredit = ?, role = ?, token = ? WHERE user_id = ?";
             try(PreparedStatement statement = connection.prepareStatement(sql)){
                 statement.setString(1, user.getLogin());
                 statement.setString(2, user.getPassword());
                 statement.setString(3, user.getUsername());
                 statement.setInt(4, user.getSocialCredit());
                 statement.setString(5, user.getRole().toString());
-                statement.setBoolean(6, user.isBanned());
-                statement.setString(7, user.getToken());
-                statement.setInt(8, user.getId());
+                statement.setString(6, user.getToken());
+                statement.setInt(7, user.getId());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                throw new DatabaseQueryException(e.getMessage());
+            }
+        } catch (SQLException e) {
+            throw new DatabaseQueryException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void deleteUser(int user) throws DatabaseQueryException {
+        try(Connection connection = connectionPool.getConnection()){
+            String sql = "DELETE FROM users WHERE user_id = ?";
+            try(PreparedStatement statement = connection.prepareStatement(sql)){
+                statement.setInt(1, user);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new DatabaseQueryException(e.getMessage());

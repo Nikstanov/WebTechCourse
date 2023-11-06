@@ -2,6 +2,10 @@ package org.education.beans;
 
 import lombok.*;
 
+/**
+ * @author nstah
+ * @version 0.5
+ */
 @Builder
 @Getter
 @Setter
@@ -15,7 +19,6 @@ public class User {
     private String token;
     private String password;
     private int socialCredit = 0;
-    private boolean banned = false;
     private Role role = Role.USER;
 }
 

@@ -7,6 +7,13 @@ import java.sql.SQLException;
 
 public class MovieMapper {
 
+    /**
+     *
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
+
     public static Movie mapperMovie(ResultSet rs) throws SQLException {
         return Movie.builder()
                 .id(rs.getInt("movie_id"))
