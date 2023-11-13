@@ -12,7 +12,57 @@
 <fmt:setLocale value="${lang}"/>
 <fmt:setBundle basename="localizations.localization" var="loc"/>
 <style>
-  <%@include file="../styles/header.css"%>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+
+  .language-btn {
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .language-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .pagination button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .pagination button:hover {
+    background-color: #0056b3;
+  }
 </style>
 <header>
   <nav>
@@ -32,7 +82,7 @@
     <c:if test="${role == 'ADMIN'}">
       <a href="?command=admin_page"><fmt:message key="bar.admin" bundle="${loc}"/></a>
     </c:if>
-    <a href="?command=change_lang">${lang}</a>
+    <a class="language-btn" href="?command=change_lang">${lang}</a>
   </nav>
 </header>
 

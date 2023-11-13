@@ -26,7 +26,7 @@ public class SignInCommand implements Command {
             UserPrincipal userPrincipal = userService.authenticate(email,password);
             if(userPrincipal == null){
                 request.setAttribute("Error", "Incorrect password");
-                return "WEB-INF/view/signIn .jsp";
+                return "WEB-INF/view/signIn.jsp";
             }
             request.getSession().setAttribute(Attributes.USER_PRINCIPAL, userPrincipal);
             request.setAttribute("role", userPrincipal.getRole().toString());
