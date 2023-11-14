@@ -1,5 +1,6 @@
 package org.education.controller;
 
+import com.google.common.util.concurrent.AbstractScheduledService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,9 @@ import org.education.DAO.connection.ConnectionPool;
 import org.education.DAO.exception.ConnectionException;
 import org.education.beans.Attributes;
 import org.education.controller.command.CommandFactory;
+import org.education.service.ServiceFactory;
+import org.education.service.exception.ServiceException;
+import org.education.service.impl.UserServiceImpl;
 import org.postgresql.core.ConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +22,9 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.Serial;
 import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 @NoArgsConstructor
@@ -76,7 +83,19 @@ public class MainServlet extends HttpServlet {
         } catch (ConnectionException e) {
             throw new RuntimeException(e);
         }
-        Properties logProperties = new Properties();
+
+        var scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(
+                () -> {
+                        try {
+                            ServiceFactory.getInstance().getUserService().updateRate();
+                        } catch (ServiceException e) {
+                            logger.error(e.getMessage());
+                        }
+                },
+                5,5, TimeUnit.MINUTES);
+
+                Properties logProperties = new Properties();
         try {
             logProperties.load(MainServlet.class.getClassLoader().getResourceAsStream("log4j.properties"));
         } catch (IOException e) {

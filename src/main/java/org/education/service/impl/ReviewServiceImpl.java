@@ -45,7 +45,7 @@ public class ReviewServiceImpl implements ReviewService {
             movie.setAverageMark(reviewDAO.getAverageMark(movie));
             movieDAO.updateMovieMark(movie);
 
-            ServiceFactory.getInstance().getUserService().updateRate();
+            //ServiceFactory.getInstance().getUserService().updateRate();
 
         } catch (DatabaseQueryException e) {
             throw new ServiceException(e.getMessage());

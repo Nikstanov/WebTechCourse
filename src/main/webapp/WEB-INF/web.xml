@@ -46,6 +46,13 @@
     <filter-name>security</filter-name>
     <servlet-name>main</servlet-name>
   </filter-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+    <url-pattern>*.jpg</url-pattern>
+    <url-pattern>*.png</url-pattern>
+  </servlet-mapping>
 
 <!--  <servlet-mapping>-->
 <!--    <servlet-name>default</servlet-name>-->
