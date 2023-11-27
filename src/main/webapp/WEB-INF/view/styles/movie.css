@@ -1,0 +1,37 @@
+.reviewForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputReviewPart{
+    display: flex;
+    flex-direction: row;
+    margin: inherit;
+}
+
+.markReviewPart{
+    width: 20%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.submitReviewButton{
+    width: 5em;
+    height: 2em;
+}
+
+.mark{
+    display: flex;
+    flex-direction: column;
+}
+
+.textArea{
+    width:80%;
+}
+
+.review_info{
+    display: flex;
+    flex-direction: row;
+}
