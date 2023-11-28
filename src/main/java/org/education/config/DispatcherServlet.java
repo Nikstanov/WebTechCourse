@@ -3,7 +3,6 @@ package org.education.config;
 import jakarta.servlet.Filter;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.PropertyConfigurator;
 import org.education.DAO.connection.ConnectionPool;
