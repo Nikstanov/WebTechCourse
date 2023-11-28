@@ -3,9 +3,12 @@ package org.education.config;
 import org.education.beans.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,13 +30,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .userDetailsService(userDetailsService)
-                .authorizeHttpRequests(request -> {
-                    request
-                            .requestMatchers("/admin/*").hasAnyAuthority(Role.ROLE_ADMIN.name())
-                            .requestMatchers("/review").hasAnyAuthority(Role.ROLE_ADMIN.name(), Role.ROLE_USER.name())
-                            .anyRequest().permitAll();
-                })
-                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/admin/*").hasAnyAuthority(Role.ROLE_ADMIN.name())
+                        .requestMatchers("/review").hasAnyAuthority(Role.ROLE_ADMIN.name(), Role.ROLE_USER.name())
+                        .anyRequest().permitAll())
+                .csrf(Customizer.withDefaults())
                 .formLogin(configurer -> {
                     configurer
                             .loginPage("/reg/signInPage")

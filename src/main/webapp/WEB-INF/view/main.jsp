@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <fmt:setLocale value="${lang}"/>
 <fmt:setBundle basename="localizations.localization" var="loc"/>
 
@@ -80,7 +81,7 @@
 
     <c:forEach var="movie" items="${movies}">
         <div class="movie-card">
-            <img src="../../images/image.jpg"/>
+                <img src="${pageContext.request.contextPath}/images/image.jpg" alt="image"/>
             <a href="/movie/${movie.getId()}">${movie.getName()}</a>
             <p>${movie.getShortDescription()}</p>
         </div>

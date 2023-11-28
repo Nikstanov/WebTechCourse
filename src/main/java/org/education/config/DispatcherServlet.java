@@ -5,7 +5,6 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.PropertyConfigurator;
-import org.education.DAO.connection.ConnectionPool;
 import org.education.DAO.exception.ConnectionException;
 import org.education.service.UserService;
 import org.education.service.exception.ServiceException;
@@ -55,12 +54,6 @@ public class DispatcherServlet extends AbstractAnnotationConfigDispatcherServlet
         }
         PropertyConfigurator.configure(logProperties);
         log.info("start server " + getServletName());
-
-        try {
-            ConnectionPool.getInstance().initialize();
-        } catch (ConnectionException e) {
-            throw new RuntimeException(e);
-        }
 
         var scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(

@@ -72,6 +72,8 @@
 <jsp:include page="common/header.jsp"/>
 
 <form:form action="/reg/signIn" method="post" modelAttribute="user">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    
     <form:label path="email" for="email">Email:</form:label>
     <form:input path="email" type="email" id="email" name="email" required="true"/>
 

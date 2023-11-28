@@ -1,15 +1,12 @@
 package org.education.DAO.impl;
 
 import org.education.DAO.MovieDAO;
-import org.education.DAO.connection.ConnectionPool;
 import org.education.DAO.exception.DatabaseQueryException;
 import org.education.beans.Movie;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
