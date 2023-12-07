@@ -1,0 +1,123 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .movie-details {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        button {
+            width: 100%;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .reviews {
+            margin-top: 20px;
+        }
+
+        .review {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <style th:replace="~{common/header :: headerCSS}"></style>
+</head>
+
+<header th:replace="~{common/header :: header}"></header>
+<body>
+<div class="movie-details">
+    <h2 th:text="${#ctx.session.movie.getName()}"></h2>
+    <p><strong th:text="#{movie.author} + ':'"></strong><span th:text="${#ctx.session.movie.getAuthor()}" th:remove="tag"/></p>
+    <p><strong th:text="#{movie.description} + ':'"></strong><span th:text="${#ctx.session.movie.getDescription()}" th:remove="tag"/></p>
+    <p><strong th:text="#{movie.mark} + ':'"></strong><span th:text="${#ctx.session.movie.getAverageMark()}" th:remove="tag"/></p>
+
+    <form sec:authorize="isAuthenticated()" id="reviewForm" th:method="POST" th:action="@{/review}" th:object="${review}">
+        <label for="marks" th:text="#{review.markSection} + ':'"></label>
+        <select id="marks" name="mark" required="true" th:field="*{mark}">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="reviewText" th:text="#{review.reviewForm} + ':'"></label>
+        <textarea id="reviewText" name="review" rows="6" required="true" th:field="*{review}"></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="reviews">
+        <h3 th:text="#{review.reviewSection}"></h3>
+        <div class="review" th:each="user_review : ${#ctx.session.movie.getReviewList()}">
+            <p><strong th:text="#{review.user} + ':'"></strong><span th:text="${user_review.getUser().getUsername()} + '(' + #{user.rating} + ':' + ${user_review.getUser().getSocialCredit()} + ')'" th:remove="tag"/></p>
+            <p><strong th:text="#{movie.mark} + ':'"></strong><span th:text="${user_review.getMark()}" th:remove="tag"/></p>
+            <p><strong th:text="#{review.review} + ':'"></strong><span th:text="${user_review.getReview()}" th:remove="tag"/></p>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .movies-container {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .movie-card {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            margin: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .pagination button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <style th:replace="~{common/header :: headerCSS}"></style>
+</head>
+<header th:replace="~{common/header :: header}"></header>
+<!--<jsp:include page="common/header.html"/>-->
+<body>
+<div class="movies-container">
+
+    <div class="movie-card" th:each="movie: ${#ctx.session.movies}">
+        <img src="" th:src="@{../static/images/{name}.jpg(name=${movie.getName()})}" alt="image"/>
+        <a th:href="@{/movie/{id}(id=${movie.getId()})}" th:text="${movie.getName()}"></a>
+        <p th:text="${movie.getShortDescription()}"></p>
+    </div>
+
+</div>
+
+<div class="pagination">
+    <a th:if="${#ctx.session.page > 0}" th:href="@{/(page=${#ctx.session.page - 1})}" th:text="#{main.prev}"></a>
+    <a th:if="${#ctx.session.page < #ctx.session.maxPage}" th:href="@{/(page=${#ctx.session.page+1})}" th:text="#{main.next}"></a>
+</div>
+
+</body>
+
+</html>
+

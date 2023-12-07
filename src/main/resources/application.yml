@@ -1,0 +1,18 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  application:
+    name: Lab4
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: Nikstanov
+    password: 15100103
+    url: jdbc:postgresql://localhost:5051/moviedb
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update

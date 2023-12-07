@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Admin page</title>
+    <style th:replace="~{common/header :: headerCSS}"></style>
+</head>
+<header th:replace="~{common/header :: header}"></header>
+<body>
+    <div th:each="user: ${users}">
+        <p><strong th:text="#{user.rating} + ':'"></strong><span th:text="${user.getUsername()} + '(' + #{user.rating} + ':' + ${user.getSocialCredit()} + ') ' + ${user.getRole().toString()}" th:remove="tag"></span></p>
+        <a th:href="@{/ban/{id}(id=${user.getId()})}" th:text="#{user.ban}"></a>
+        <a th:href="@{/delete/{id}(id=${user.getId()})}" th:text="#{user.delete}"></a>
+        <br>
+    </div>
+</body>
+</html>
